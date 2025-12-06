@@ -1,8 +1,8 @@
 package tests
 
 import (
-	"testing"
 	"AoC-2025-go/internal/src"
+	"testing"
 )
 
 func TestGetZeros(t *testing.T) {
@@ -47,7 +47,7 @@ func TestGetZeros(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			result, err := src.GetZeros(tt.input)
-			
+
 			if tt.wantErr {
 				if err == nil {
 					t.Errorf("GetZeros() ожидалась ошибка, но не получена")
