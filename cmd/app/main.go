@@ -24,9 +24,6 @@ func main() {
 		return
 	}
 
-	zeros, err := src.GetZeros(input)
-	if err != nil {
-		log.Panicf("ошибка: %v\n", err)
-	}
+	zeros, _ := src.GetZeros2Part(input)
 	println(zeros)
 }

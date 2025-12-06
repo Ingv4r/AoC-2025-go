@@ -4,16 +4,8 @@ import (
 	"strconv"
 )
 
-func absMode(n, d int) int {
-	result := n % d
-	if result < 0 {
-		result += d
-	}
-	return result
-}
-
 func GetZeros(code []string) (int, error) {
-	current_pos := 50
+	currentPos := 50
 	zeros := 0
 
 	for _, line := range code {
@@ -26,13 +18,54 @@ func GetZeros(code []string) (int, error) {
 
 		switch direction {
 		case "L":
-			current_pos -= shiftNum
+			currentPos -= shiftNum
 		case "R":
-			current_pos += shiftNum
+			currentPos += shiftNum
 		}
-		if absMode(current_pos, 100) == 0 {
+		if absMode(currentPos, 100) == 0 {
 			zeros++
 		}
 	}
 	return zeros, nil
+}
+
+func GetZeros2Part(code []string) (int, error) {
+	currentPos := 50
+	zeros := 0
+
+	for _, line := range code {
+		direction := line[0:1]
+		shiftStr := line[1:]
+		shiftNum, err := strconv.Atoi(shiftStr)
+		if err != nil {
+			return -1, err
+		}
+
+		oldPos := currentPos
+		switch direction {
+		case "R":
+			currentPos += shiftNum
+			zeros += floorDiv(currentPos, 100) - floorDiv(oldPos, 100)
+		case "L":
+			currentPos -= shiftNum
+			zeros += floorDiv(oldPos-1, 100) - floorDiv(currentPos-1, 100)
+		}
+	}
+	return zeros, nil
+}
+
+func absMode(n, d int) int {
+	result := n % d
+	if result < 0 {
+		result += d
+	}
+	return result
+}
+
+func floorDiv(a, b int) int {
+	q := a / b
+	if a < 0 && a%b != 0 {
+		q--
+	}
+	return q
 }
