@@ -1,68 +1,42 @@
 package tests
 
 import (
-	"AoC-2025-go/internal/src"
+	"fmt"
 	"testing"
+
+	"AoC-2025-go/internal/src"
 )
 
 func TestGetZeros(t *testing.T) {
-	tests := []struct {
-		name     string
-		input    []string
-		expected int
-		wantErr  bool
-	}{
-		{
-			name: "Тест 1",
-			input: []string{
-				"L68",
-				"L30",
-				"R48",
-				"L5",
-				"R60",
-				"L55",
-				"L1",
-				"L99",
-				"R14",
-				"L82",
-			},
-			expected: 3,
-			wantErr:  false,
-		},
-		{
-			name: "Тест 2",
-			input: []string{
-				"L25",
-				"L25",
-				"R25",
-				"L25",
-				"R25",
-				"L25",
-			},
-			expected: 3,
-			wantErr:  false,
-		},
+	input := "L68\nL30\nR48\nL5\nR60\nL55\nL1\nL99\nR14\nL82"
+	
+	expectedPart1 := 3
+	
+	result1, err := src.GetZeros(input)
+	if err != nil {
+		t.Errorf("GetZeros() неожиданная ошибка: %v", err)
 	}
+	
+	if result1 != expectedPart1 {
+		t.Errorf("GetZeros() = %d, want %d", result1, expectedPart1)
+	} else {
+		fmt.Printf("✓ GetZeros правильно: %d\n", result1)
+	}
+}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			result, err := src.GetZeros(tt.input)
-
-			if tt.wantErr {
-				if err == nil {
-					t.Errorf("GetZeros() ожидалась ошибка, но не получена")
-				}
-				return
-			}
-
-			if err != nil {
-				t.Errorf("GetZeros() неожиданная ошибка: %v", err)
-				return
-			}
-
-			if result != tt.expected {
-				t.Errorf("GetZeros() = %v, ожидалось %v", result, tt.expected)
-			}
-		})
+func TestGetZeros2Part(t *testing.T) {
+	input := "L68\nL30\nR48\nL5\nR60\nL55\nL1\nL99\nR14\nL82"
+	
+	expectedPart2 := 6
+	
+	result2, err := src.GetZeros2Part(input)
+	if err != nil {
+		t.Errorf("GetZeros2Part() неожиданная ошибка: %v", err)
+	}
+	
+	if result2 != expectedPart2 {
+		t.Errorf("GetZeros2Part() = %d, want %d", result2, expectedPart2)
+	} else {
+		fmt.Printf("✓ GetZeros2Part правильно: %d\n", result2)
 	}
 }

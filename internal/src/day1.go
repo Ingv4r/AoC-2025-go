@@ -2,9 +2,11 @@ package src
 
 import (
 	"strconv"
+	"strings"
 )
 
-func GetZeros(code []string) (int, error) {
+func GetZeros(input string) (int, error) {
+	code := strings.Split(strings.TrimSpace(input), "\n")
 	currentPos := 50
 	zeros := 0
 
@@ -29,7 +31,8 @@ func GetZeros(code []string) (int, error) {
 	return zeros, nil
 }
 
-func GetZeros2Part(code []string) (int, error) {
+func GetZeros2Part(input string) (int, error) {
+	code := strings.Split(strings.TrimSpace(input), "\n")
 	currentPos := 50
 	zeros := 0
 

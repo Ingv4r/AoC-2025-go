@@ -2,8 +2,8 @@ package main
 
 import (
 	"AoC-2025-go/internal/src"
-	"AoC-2025-go/internal/utils"
 	"fmt"
+	"AoC-2025-go/internal/utils"
 	"log"
 	"os"
 
@@ -18,12 +18,11 @@ func main() {
 	}
 	sessionCookie := os.Getenv("AOC_SESSION")
 
-	input, err := utils.FetchInput(2025, 1, sessionCookie)
+	input, err := utils.FetchInput(2025, 2, sessionCookie)
 	if err != nil {
 		fmt.Printf("ошибка: %v\n", err)
 		return
 	}
 
-	zeros, _ := src.GetZeros2Part(input)
-	println(zeros)
+	fmt.Printf("Sum of invalids: %d", src.InvalidIdsSum(input))
 }
