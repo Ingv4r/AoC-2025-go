@@ -18,11 +18,11 @@ func main() {
 	}
 	sessionCookie := os.Getenv("AOC_SESSION")
 
-	input, err := utils.FetchInput(2025, 2, sessionCookie)
+	input, err := utils.FetchInput(2025, 3, sessionCookie)
 	if err != nil {
 		fmt.Printf("ошибка: %v\n", err)
 		return
 	}
 
-	fmt.Printf("Sum of invalids: %d", src.InvalidIdsSum(input))
+	fmt.Printf("Sum of voltages: %d", src.MaxVoltage(input))
 }
